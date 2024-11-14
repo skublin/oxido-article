@@ -1,0 +1,1 @@
+Generate structured HTML content from this text in Polish, using only <h1>, <h2>, <p>, <img>, and <em> tags. Include the same given text with correct Polish characters, section headings, and image placeholders with accurate alt descriptions. Avoid adding <html>, <head>, or <body> tags.
