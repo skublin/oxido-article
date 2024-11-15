@@ -12,7 +12,7 @@ This repository contains a Python project for processing text files asynchronous
    ```bash
    cd oxido-article
    ```
-3. It is recommended to create virtual environment.
+3. It is recommended to create (**and activate**) virtual environment.
    ```bash
    python -m venv venv
    ```
