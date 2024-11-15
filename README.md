@@ -23,15 +23,18 @@ This repository contains a Python project for processing text files asynchronous
    ```bash
    pip install -r requirements.txt
    ```
-5. Set your OpenAI API key in the environment:
+5. Set your OpenAI API key in the environment.
    ```bash
    export OPENAI_API_KEY="your_api_key"
    ```
-6. Start the Flask application.
+6. Set any secret key.
+   ```bash
+   export SECRET_KEY="your_secret_key"
+7. Start the Flask application.
    ```bash
    python app.py
    ```
-7. Open a web browser and go to [http://127.0.0.1:5000/](http://127.0.0.1:5000/).
+8. Open a web browser and go to [http://127.0.0.1:5000/](http://127.0.0.1:5000/).
 
 ## Usage
 This application performs the following steps:
