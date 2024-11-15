@@ -30,6 +30,7 @@ This repository contains a Python project for processing text files asynchronous
 6. Set any secret key.
    ```bash
    export SECRET_KEY="your_secret_key"
+   ```
 7. Start the Flask application.
    ```bash
    python app.py
