@@ -16,7 +16,7 @@ This repository contains a Python project for processing text files asynchronous
    ```bash
    python -m venv venv
 
-   source myvenv/bin/activate
+   source venv/bin/activate
    ```
 4. Install required packages.
    ```bash
