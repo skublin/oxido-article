@@ -16,8 +16,8 @@ This repository contains a Python project for processing text files asynchronous
    ```bash
    python -m venv venv
    ```
-   ```
-   source venv/bin/activate
+   ```bash
+   source venv/bin/activate    # Windows: .\venv\Scripts\activate
    ```
 4. Install required packages.
    ```bash
@@ -25,11 +25,11 @@ This repository contains a Python project for processing text files asynchronous
    ```
 5. Set your OpenAI API key in the environment.
    ```bash
-   export OPENAI_API_KEY="your_api_key"
+   export OPENAI_API_KEY="your_api_key"    # Windows: set OPENAI_API_KEY="your_api_key"
    ```
 6. Set any secret key.
    ```bash
-   export SECRET_KEY="your_secret_key"
+   export SECRET_KEY="your_secret_key"    # Windows: set SECRET_KEY="your_secret_key"
    ```
 7. Start the Flask application.
    ```bash
@@ -76,8 +76,17 @@ After running `app.py`, the application will be available locally at [http://127
 
 ## Example Workflow
 1. Upload a `.txt` file (e.g., `tresc_artykulu.txt` located in the `uploads/` folder).
-2. The file will be processed, and the generated HTML will be displayed on the result page.
-3. You can either view the HTML directly in the browser or download it for further use.
+   
+   <img width="512" alt="main_page" src="https://github.com/user-attachments/assets/ed774f9e-0c20-45db-8d6a-9f410272ba76">
+   
+3. The file will be processed, and the generated HTML will be displayed on the result page.
+   
+   <img width="512" alt="show_article_1" src="https://github.com/user-attachments/assets/8e1fb227-ff67-4077-a25b-74bfe5da35e5">
+   
+5. You can either view the HTML directly in the browser or download it for further use.
+   
+   <img width="512" alt="show_article_2" src="https://github.com/user-attachments/assets/78ea979f-3891-4ebf-8515-9d0ff82caf0f">
+   
 
 ## License
 This project is licensed under the MIT License.
