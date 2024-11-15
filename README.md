@@ -12,19 +12,23 @@ This repository contains a Python project for processing text files asynchronous
    ```bash
    cd oxido-article
    ```
-3. Install required packages.
+3. It is recommended to create virtual environment.
+   ```bash
+   python -m venv venv
+   ```
+4. Install required packages.
    ```bash
    pip install -r requirements.txt
    ```
-4. Set your OpenAI API key in the environment:
+5. Set your OpenAI API key in the environment:
    ```bash
    export OPENAI_API_KEY="your_api_key"
    ```
-5. Start the Flask application.
+6. Start the Flask application.
    ```bash
    python app.py
    ```
-6. Open a web browser and go to [http://127.0.0.1:5000/](http://127.0.0.1:5000/).
+7. Open a web browser and go to [http://127.0.0.1:5000/](http://127.0.0.1:5000/).
 
 ## Usage
 This application performs the following steps:
