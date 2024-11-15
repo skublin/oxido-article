@@ -16,7 +16,7 @@ logging.basicConfig(
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
     handlers=[
         logging.FileHandler("app.log"),
-        # logging.StreamHandler()  # opcjonalnie, by logować jednocześnie do konsoli
+        logging.StreamHandler()  # opcjonalnie, by logować jednocześnie do konsoli
     ]
 )
 logger = logging.getLogger(__name__)
@@ -41,12 +41,12 @@ async def read_file(file_path: str) -> Optional[str]:
 async def process_text(text: str) -> Optional[str]:
     # Asynchronously process text using OpenAI API.
     
-    system_path = os.path.relpath('../config/role.txt', current_path)  # "config/role.txt"
-    user_path = os.path.relpath('../config/prompt.txt', current_path)  # "config/prompt.txt"
+    system_path = os.path.relpath('./config/role.txt', current_path)  # "config/role.txt"
+    user_path = os.path.relpath('./config/prompt.txt', current_path)  # "config/prompt.txt"
 
     system_content = await read_file(system_path)
     user_content = await read_file(user_path)
-
+    
     try:
         messages = [
                 {
@@ -81,9 +81,10 @@ async def write_file(file_path: str, data: str) -> None:
     except Exception as e:
         logger.error("Error writing to file %s: %s", file_path, e)
 
-async def main():
-    input_path = os.path.relpath('../files/tresc_artykulu.txt', current_path)
-    output_path = os.path.relpath('../files/artykul.html', current_path)
+async def main(file_path: str) -> None:
+    #input_path = os.path.relpath('../files/tresc_artykulu.txt', current_path)
+    input_path = file_path
+    output_path = os.path.relpath('./uploads/artykul.html', current_path)
 
     text = await read_file(input_path)
 

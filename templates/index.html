@@ -1,0 +1,145 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oxido - Article</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-color: #f0f0f0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .logo {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 2rem;
+        }
+        .file-upload {
+            background-color: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .file-input {
+            display: none;
+        }
+        .file-label {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+            text-align: center;
+            box-sizing: border-box;
+        }
+        .file-label:hover {
+            background-color: #45a049;
+        }
+        .file-name {
+            margin-top: 1rem;
+            font-style: italic;
+        }
+        .file-info {
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        .send-button,
+        .show-button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-top: 1rem;
+            background-color: #008CBA;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+            box-sizing: border-box;
+        }
+        .send-button:hover,
+        .show-button:hover {
+            background-color: #007B9A;
+        }
+        .send-button:disabled,
+        .show-button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background-color: #333;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">Oxido - Article</div>
+        <div class="file-upload">
+            <form method="post" enctype="multipart/form-data" action="/">
+                <input type="file" id="fileInput" name="file" class="file-input" accept=".txt">
+                <label for="fileInput" class="file-label">Select File</label>
+                <div id="fileName" class="file-name">No file selected...</div>
+                <p class="file-info">Only txt file extension is accepted.</p>
+                <button id="sendButton" class="send-button" disabled type="submit">Send</button>
+                <button id="showButton" class="show-button" type="button" onclick="location.href='/result'" disabled>Show Article</button>
+            </form>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2024 Szymon Kublin</p>
+    </footer>
+
+    <script>
+        const fileInput = document.getElementById('fileInput');
+        const fileName = document.getElementById('fileName');
+        const sendButton = document.getElementById('sendButton');
+        const showButton = document.getElementById('showButton');
+
+        // Pobranie stanu przetworzenia z serwera (ustawianie w zależności od sesji)
+        const fileProcessed = {{ file_processed|tojson|safe }};
+        if (fileProcessed) {
+            showButton.disabled = false;
+        } else {
+            showButton.disabled = true;
+        }
+
+        fileInput.addEventListener('change', (event) => {
+            const file = event.target.files[0];
+            if (file) {
+                fileName.textContent = `Selected file: ${file.name}`;
+                sendButton.disabled = false;
+                showButton.disabled = true;  // Wyłącz przycisk, jeśli nowy plik jest wybierany
+            } else {
+                fileName.textContent = 'No file selected';
+                sendButton.disabled = true;
+                showButton.disabled = true;
+            }
+        });
+    </script>
+</body>
+</html>
