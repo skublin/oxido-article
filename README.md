@@ -15,7 +15,8 @@ This repository contains a Python project for processing text files asynchronous
 3. It is recommended to create (**and activate**) virtual environment.
    ```bash
    python -m venv venv
-
+   ```
+   ```
    source venv/bin/activate
    ```
 4. Install required packages.
