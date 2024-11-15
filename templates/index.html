@@ -120,7 +120,6 @@
         const sendButton = document.getElementById('sendButton');
         const showButton = document.getElementById('showButton');
 
-        // Pobranie stanu przetworzenia z serwera (ustawianie w zależności od sesji)
         const fileProcessed = {{ file_processed|tojson|safe }};
         if (fileProcessed) {
             showButton.disabled = false;
@@ -133,7 +132,7 @@
             if (file) {
                 fileName.textContent = `Selected file: ${file.name}`;
                 sendButton.disabled = false;
-                showButton.disabled = true;  // Wyłącz przycisk, jeśli nowy plik jest wybierany
+                showButton.disabled = true;
             } else {
                 fileName.textContent = 'No file selected';
                 sendButton.disabled = true;

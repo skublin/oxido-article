@@ -16,7 +16,8 @@ logging.basicConfig(
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
     handlers=[
         logging.FileHandler("app.log"),
-        logging.StreamHandler()  # opcjonalnie, by logować jednocześnie do konsoli
+        # Optional, uncomment to log to the console:
+        # logging.StreamHandler()  
     ]
 )
 logger = logging.getLogger(__name__)
@@ -25,7 +26,7 @@ logger = logging.getLogger(__name__)
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 async def read_file(file_path: str) -> Optional[str]:
-    # Asynchronously read a text file.
+    """ Asynchronously read a text file. """
     try:
         async with aiofiles.open(file_path, 'r', encoding='utf-8') as file:
             content = await file.read()
@@ -39,7 +40,7 @@ async def read_file(file_path: str) -> Optional[str]:
         return None
 
 async def process_text(text: str) -> Optional[str]:
-    # Asynchronously process text using OpenAI API.
+    """ Asynchronously process text using OpenAI API. """
     
     system_path = os.path.relpath('./config/role.txt', current_path)  # "config/role.txt"
     user_path = os.path.relpath('./config/prompt.txt', current_path)  # "config/prompt.txt"
@@ -73,7 +74,7 @@ async def process_text(text: str) -> Optional[str]:
         return None
 
 async def write_file(file_path: str, data: str) -> None:
-    # Asynchronously write data to a text file.
+    """ Asynchronously write data to a text file. """
     try:
         async with aiofiles.open(file_path, 'w', encoding='utf-8') as file:
             await file.write(data)
@@ -82,7 +83,8 @@ async def write_file(file_path: str, data: str) -> None:
         logger.error("Error writing to file %s: %s", file_path, e)
 
 async def main(file_path: str) -> None:
-    #input_path = os.path.relpath('../files/tresc_artykulu.txt', current_path)
+    """ Read and process file from given file path. """
+    # input_path = os.path.relpath('../files/tresc_artykulu.txt', current_path)
     input_path = file_path
     output_path = os.path.relpath('./uploads/artykul.html', current_path)
 
